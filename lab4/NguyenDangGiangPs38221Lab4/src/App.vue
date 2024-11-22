@@ -1,11 +1,8 @@
 <script setup>
-import Hello from "./components/bai2.vue";
-import Bai3 from "./components/bai3.vue";
+ import NavBar from './components/NavBar.vue';
 </script>
-
 <template>
-  <Hello></Hello>
-  <Bai3></Bai3>
+  <NavBar></NavBar>
+  <RouterView></RouterView>
 </template>
 
-<style scoped></style>

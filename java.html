@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Bootstap 5 Responsive Admin Dashboard</title>
+</head>
+
+<body>
+    <div class="container d-flex">
+        <!-- Sidebar -->
+        <!-- Trang nội dung -->
+    
+        <div class="container-fluid px-4 my-4">
+            <!-- Tabs -->
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane"
+                            type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Video Edition
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane"
+                            type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Video List
+                    </button>
+                </li>
+            </ul>
+    
+            <!-- Tab Content -->
+            <div class="tab-content" id="myTabContent">
+                <!-- Video Edition Form -->
+                <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab"
+                     tabindex="0">
+                    <div class="row mt-3">
+                        <div class="col-md-4 text-center">
+                            <div class="border mb-3 p-3" style="border-radius: 8px;">
+                                <p><strong>Poster</strong></p>
+                                <div style="height: 150px; background-color: #f9f9f9;"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <label class="form-label">YouTube ID?</label>
+                            <input type="text" class="form-control mb-2" placeholder="Enter YouTube ID">
+    
+                            <label class="form-label">Video Title?</label>
+                            <input type="text" class="form-control mb-2" placeholder="Enter Video Title">
+    
+                            <label class="form-label">View Count?</label>
+                            <input type="number" class="form-control mb-2" value="0">
+    
+                            <label class="form-label d-block">Status</label>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="status" id="active" checked>
+                                <label class="form-check-label" for="active">Active</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="status" id="inactive">
+                                <label class="form-check-label" for="inactive">Inactive</label>
+                            </div>
+    
+                            <label class="form-label mt-3">Description?</label>
+                            <textarea class="form-control" rows="3" placeholder="Enter description"></textarea>
+                        </div>
+                    </div>
+    
+                    <!-- Action Buttons -->
+                    <div class="text-center mt-3 action-buttons">
+                        <button class="btn btn-danger">Create</button>
+                        <button class="btn btn-warning">Update</button>
+                        <button class="btn btn-secondary">Delete</button>
+                        <button class="btn btn-dark">Reset</button>
+                    </div>
+                </div>
+    
+                <!-- Video List Section -->
+                <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+                    <div class="table-responsive mt-3">
+                        <table class="table table-bordered text-center">
+                            <thead class="table-light">
+                            <tr>
+                                <th>YouTube ID</th>
+                                <th>Video Title</th>
+                                <th>View Count</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>Ytet_bPiRCU</td>
+                                <td>Lâu ghé mới gặp</td>
+                                <td>105</td>
+                                <td>Active</td>
+                                <td><a href="#" class="text-primary">Edit</a></td>
+                            </tr>
+                            <!-- Additional rows can be added here -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="text-center">
+                        <p>85 videos</p>
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination justify-content-center">
+                                <li class="page-item"><a class="page-link" href="#">«</a></li>
+                                <li class="page-item"><a class="page-link" href="#">‹</a></li>
+                                <li class="page-item"><a class="page-link" href="#">›</a></li>
+                                <li class="page-item"><a class="page-link" href="#">»</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
