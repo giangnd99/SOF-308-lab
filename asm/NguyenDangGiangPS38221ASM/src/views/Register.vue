@@ -1,72 +1,85 @@
 <template>
+  <div
+    class="register-container d-flex justify-content-center align-item-center"
+  >
     <div
-      class="modal fade"
-      id="staticRegister"
-      data-bs-backdrop="static"
-      data-bs-keyboard="false"
-      tabindex="-1"
-      aria-labelledby="staticBackdropLabel"
-      aria-hidden="true"
+      class="register-content bg-light rounded-3 border border-light border-5 p-3 mt-5 shadow-lg"
     >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="staticBackdropLabel">Register</h1>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <form class="row g-3">
-              <div class="col-md-6">
-                <label for="inputEmail4" class="form-label">Email</label>
-                <input type="email" class="form-control" id="inputEmail4" />
-              </div>
-              <div class="col-md-6">
-                <label for="inputPassword4" class="form-label">Password</label>
-                <input
-                  type="password"
-                  class="form-control"
-                  id="inputPassword4"
-                />
-              </div>
-                <label for="inputAddress2" class="form-label">Address:</label>
-              <div class="col-md-3" id="inputAddress2">
-                <label for="inputCity" class="form-label">City</label>
-                <select id="inputCity" class="form-select">
-                  <option selected>Choose...</option>
-                  <option>...</option>
-                </select>
-              </div>
-              <div class="col-md-3">
-                <label for="inputState" class="form-label">Province</label>
-                <select id="inputState" class="form-select">
-                  <option selected>Choose...</option>
-                  <option>...</option>
-                </select>
-              </div>
-              <div class="col-md-6">
-                <label for="inputZip" class="form-label">Street</label>
-                <input type="text" class="form-control" id="inputZip" />
-              </div>
-              <div class="col-12">
-                <div class="modal-footer">
-                  <button
-                    type="button"
-                    class="btn btn-secondary"
-                    data-bs-dismiss="modal"
-                  >
-                    Close
-                  </button>
-                  <button type="submit" class="btn btn-primary">Sign in</button>
-                </div>
-              </div>
-            </form>
+      <div class="text-center mb-4">
+        <h1 class="fs-4">Register</h1>
+      </div>
+      <form @submit.prevent="submitForm" class="row g-3">
+        <div class="col-md-12">
+          <label for="inputEmail4" class="form-label">Full name</label>
+          <input
+            v-model="formData.name"
+            type="text"
+            class="form-control"
+            id="inputEmail4"
+            placeholder="Enter your email"
+            required
+          />
+        </div>
+        <div class="col-md-6">
+          <label for="inputEmail4" class="form-label">Email</label>
+          <input
+            v-model="formData.email"
+            type="email"
+            class="form-control"
+            id="inputEmail4"
+            placeholder="Enter your email"
+            required
+          />
+        </div>
+        <div class="col-md-6">
+          <label for="inputPassword4" class="form-label">Password</label>
+          <input
+            v-model="formData.password"
+            type="password"
+            class="form-control"
+            id="inputPassword4"
+            placeholder="Enter your password"
+            required
+          />
+        </div>
+        <div class="col-12">
+          <div class="row d-flex justify-content-between mt-3">
+            <div class="col-sm-6 text-start">
+              <button type="reset" class="btn btn-secondary">Clear</button>
+            </div>
+            <div class="col-sm-6 text-end">
+              <button type="submit" class="btn btn-primary">Sign up</button>
+            </div>
           </div>
         </div>
-      </div>
+      </form>
     </div>
+  </div>
 </template>
+
+<script setup>
+import { reactive } from "vue";
+import AuthService from "../services/AuthService";
+const formData = reactive({
+  name: "",
+  email: "",
+  password: "",
+  admin: false,
+});
+const submitForm = async () => {
+  try {
+    const response = await AuthService.register(formData);
+    console.log("Registration successful:", response);
+  } catch (error) {
+    console.error("Registration failed:", error);
+    alert("Register fail: " + error);
+  }
+};
+</script>
+
+<style scoped>
+.register-content {
+  width: 100%;
+  max-width: 600px;
+}
+</style>
