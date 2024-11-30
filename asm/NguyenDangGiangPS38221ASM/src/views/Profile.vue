@@ -65,11 +65,15 @@ import { ref, onMounted } from 'vue';
 import UserService from '../services/UserService';
 import AuthService from '../services/AuthService';
 import { useRouter } from 'vue-router';
+import authState from '../state/authState';
 
 const router = useRouter();
 
 const currentUser = ref({});
-
+function submitLogout() {
+  AuthService.logout();
+  router.push({ name: 'Login' });
+}
 const loadUser = async () => {
   try {
     const currentTokent = AuthService.getCurrentToken();

@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div v-if="authState.isLogged" class="container">
     <nav>
       <div class="nav nav-tabs" id="nav-tab" role="tablist">
         <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button"
@@ -71,6 +71,9 @@
       </div>
     </div>
   </div>
+  <div v-else>
+    {{submitLogout()}}
+  </div>
 </template>
 
 <script setup>
@@ -79,6 +82,7 @@ import PostService from '../services/PostService';
 import AuthService from '../services/AuthService';
 import UserService from '../services/UserService';
 import { useRouter } from 'vue-router';
+import authState from '../state/authState';
 
 const router = useRouter();
 const blogs = ref([]);
@@ -86,6 +90,11 @@ const newBlog = ref({ title: '', image: '', content: '', user: {} });
 const editMode = ref(false);
 const placeholderImage = 'https://via.placeholder.com/300';
 const editingBlog = ref(null);
+
+function submitLogout() {
+  AuthService.logout()
+  router.push({ name: 'Login' });
+}
 
 const loadBlogs = async () => {
   try {

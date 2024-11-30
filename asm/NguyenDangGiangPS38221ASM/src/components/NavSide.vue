@@ -16,7 +16,7 @@
             <i class="fa-solid fa-house fa-2x"></i>
           </router-link>
         </li>
-        <li v-if="authState.isLogged" class="nav-item">
+        <li v-if="isLogged" class="nav-item">
           <router-link to="/profile" class="nav-link link-dark">
             <img :src="user.avatar" class="image-thumbnail rounded-circle" style="width: 50px; height: 50px;" alt="">
           </router-link>
@@ -32,7 +32,7 @@
           </router-link>
         </li>
   
-        <li v-if="!authState.isLogged" class="nav-item dropdown">
+        <li v-if="!isLogged" class="nav-item dropdown">
           <a class="nav-link link-dark dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
             aria-expanded="false">
             <i class="fa-solid fa-user-circle fa-2x"></i>
