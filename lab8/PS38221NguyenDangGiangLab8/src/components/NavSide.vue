@@ -1,5 +1,5 @@
 <template>
-  <div class="col-sm-1">
+  <div class="col-sm-1 nav-side">
     <nav class="navbar">
       <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -96,6 +96,11 @@ onMounted(async () => {
 </script>
 
 <style scoped>
+.nav-side{
+  position:sticky;
+  top: 148px;
+  max-height: 600px;
+}
 .nav-pills .nav-link {
   border-radius: 50%;
 }
